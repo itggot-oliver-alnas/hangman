@@ -4,39 +4,58 @@ def hangman()
   puts "Remember to only input 1 letter!"
   running = true
   index = 0
-  attempts = 9999
+  attempts = 5
   guessed = []
-  wordlist = File.readlines("words_swedish.txt")
+  wordlist = File.readlines("words-english.txt")
   word = wordlist.sample
   hidden = []
   word.each_char do |x|
-    hidden.push("_")
+    hidden.push("_ ") 
   end
   hidden.pop
+  word.upcase!
+
   while running
-    index = 0
-    if attempts == 0
-      puts "ded"
-      running = false
-    elsif hidden.include? ("_") == false
-      puts "You win!"
-      running = false
-    else
+    while hidden.include?("_ ") == true
+      puts "
+      "
       guess = gets.chomp
-      guess.upcase
-      word.upcase
+      while guess.length > 1
+        puts "Error. Try again."
+        guess = gets.chomp
+      end
+      guessed << guess
+      guess.upcase!
+      index = 0
+      if attempts == 0
+        puts "ded"
+        running = false
+      end
       word.each_char do |x|
         if guess == x
-          hidden[index] = guess
+          hidden[index] = guess + " "
+        else
+          attempts -= 1
         end
         index += 1
       end
+      system "cls"
       hidden.each do |z|
         print z
       end
-      attempts -= 1
+      puts "
+      "
+
+      guessed.to_s
+      puts "Guessed letters: #{guessed}"
+
     end
+    puts "
+
+    "
+    puts "Congtrats you win."
+    puts "You had #{attempts} attempts left!"
+    running = false
   end
 end
-
 hangman
