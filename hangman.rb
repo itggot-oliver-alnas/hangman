@@ -1,7 +1,7 @@
 def hangman()
-  puts "Welcome to Hangman!"
-  puts "Try guessing the secret word!"
-  puts "Remember to only input 1 letter!"
+  puts "Welcome fuckbois"
+  puts "Guess the word or we skin your dick"
+  puts "1 letter guesses only or we will screech autistically"
   running = true
   index = 0
   attempts = 5
@@ -10,7 +10,7 @@ def hangman()
   word = wordlist.sample
   hidden = []
   word.each_char do |x|
-    hidden.push("_ ") 
+    hidden.push("_ ")
   end
   hidden.pop
   word.upcase!
@@ -20,8 +20,8 @@ def hangman()
       puts "
       "
       guess = gets.chomp
-      while guess.length > 1
-        puts "Error. Try again."
+      while guess.length > 1 || guess.length < 1
+        puts "The fuck you doin"
         guess = gets.chomp
       end
       guessed << guess
@@ -53,8 +53,8 @@ def hangman()
     puts "
 
     "
-    puts "Congtrats you win."
-    puts "You had #{attempts} attempts left!"
+    puts "kms"
+    puts "Please die #{attempts} more times"
     running = false
   end
 end
